@@ -1,0 +1,3 @@
+1. for every review it should show on bostrom's database and on Holy's frontend
+2. If there's no empolyer (new employer) available we will create reviews for that employer automatically (ai generated)
+3. Bostrom's api and holy's api 

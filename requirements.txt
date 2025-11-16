@@ -1,0 +1,10 @@
+Flask
+flask-cors
+python-dotenv
+requests
+beautifulsoup4
+googlemaps
+textblob
+spacy
+celery
+redis

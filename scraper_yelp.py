@@ -18,3 +18,24 @@ def reviews_for(term, location):
     rev_resp = requests.get(reviews_url, headers=headers)
     rev_resp.raise_for_status()
     return rev_resp.json().get("reviews", [])
+
+def search_businesses(term, location):
+    url = "https://api.yelp.com/v3/businesses/search"
+    headers = {"Authorization": f"Bearer {YELP_API_KEY}"}
+    params = {"term": term, "location": location, "limit": 5}
+
+    resp = requests.get(url, headers=headers, params=params)
+    resp.raise_for_status()
+    data = resp.json()
+
+    results = []
+    for b in data.get("businesses", []):
+        results.append({
+            "name": b["name"],
+            "rating": b.get("rating"),
+            "review_count": b.get("review_count"),
+            "address": " ".join(b["location"].get("display_address", [])),
+            "id": b["id"],
+        })
+    return results
+
